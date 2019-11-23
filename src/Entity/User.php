@@ -32,6 +32,11 @@ class User implements AdvancedUserInterface
      */
     private $confirmation;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $roles = [];
+
 
     /**
      * @ORM\Id()
@@ -55,6 +60,12 @@ class User implements AdvancedUserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $nom;
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $changerpwd;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -344,6 +355,20 @@ class User implements AdvancedUserInterface
     public function setNom(?string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+
+
+    public function getChangerpwd(): ?string
+    {
+        return $this->changerpwd;
+    }
+
+    public function setChangerpwd(?string $changerpwd): self
+    {
+        $this->changerpwd = $changerpwd;
 
         return $this;
     }
@@ -982,7 +1007,12 @@ class User implements AdvancedUserInterface
 
     public function getRoles() {
 
-        return ['ROLE_USER'];
+        return $this->roles;
+    }
+    
+    public function setRoles(array $roles) {
+
+        $this->roles = $roles;
     }
 
 
@@ -1012,9 +1042,11 @@ class User implements AdvancedUserInterface
         {
             $chaineAleatoire .= $caracteres[rand(0, $longueurMax - 1)];
         }
+        $this->confirmationdriver = "NON";
         $this->confirmation = $chaineAleatoire.date("YmdHis");
         $this->isActive = false;
-        //$this->dateinsertion = date("Y-m-d H:i:s");
+        $this->roles = ['ROLE_USER'];
+        $this->dateinsertion = date("Y-m-d H:i:s");
     }
 
 

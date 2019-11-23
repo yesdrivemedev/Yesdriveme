@@ -3,6 +3,12 @@ security:
     encoders:
         App\Entity\User:
             algorithm: bcrypt
+
+    role_hierarchy:
+        ROLE_CHAUFFEUR: ROLE_USER
+        ROLE_ENTREPRISE: ROLE_USER
+        ROLE_PROFESSIONEL: ROLE_USER
+
     providers:
         in_memory: { memory: null }
 
@@ -39,4 +45,4 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/moncompte, roles: ROLE_USER }

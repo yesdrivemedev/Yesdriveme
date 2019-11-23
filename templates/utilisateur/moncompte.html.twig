@@ -1,0 +1,237 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+<h1>Bienvenue dans votre espace {% if app.user.roles | first == 'ROLE_USER'  %} particulier {% else %} {{ app.user.roles | first | split('_') | last | lower }} {% endif %}.</h1>
+
+
+<div class="row">
+    {% if app.user.roles | first == 'ROLE_CHAUFFEUR'  %}
+    <div class="col-md-7">
+    {% if app.user.confirmationchauffeur == 'NON'  %}
+    <p>Attention votre compte chauffeur n'est pas actif!</p>
+    <p><a href="" class="btn btn-danger">Cliquez ici pour l'activer</a> </p>
+    {% endif %}
+    </div>
+    {% endif %}
+
+</div>
+
+
+
+{% if  app.user.roles | first == 'ROLE_ENTREPRISE' %}
+ 
+<div class="row">
+    <div class="col-md-6">
+        {{ form_start(form)}}
+        
+        <div class="form-group">
+{{ form_row(form.nom, {'label':'Nom','attr' : {'placeholder':'Votre nom','class':'form-control'}}) }}
+</div>
+
+
+        <div class="form-group">
+        {{ form_row(form.prenom, {'label':'Prenom','attr' : {'placeholder':'Votre prenom','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.ville, {'label':'Ville','attr' : {'placeholder':'Ville','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.pays, {'label':'Pays','attr' : {'placeholder':'Pays','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.telephone, {'label':'Téléphone','attr' : {'placeholder':'Votre numéro de téléphone','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.societe, {'label':'Societé','attr' : {'placeholder':'Votre société','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.adressesociete, {'label':'Adresse Societe','attr' : {'placeholder':'Adresse Societe','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.telephonesociete, {'label':'Telephone Societe','attr' : {'placeholder':'telephone societe','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.typesociete, {'label':'Type Societe','attr' : {'placeholder':'type societe','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.emailsociete, {'label':'Email Societe','attr' : {'placeholder':'email societe','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.taillesociete, {'label':'Taille Societe','attr' : {'placeholder':'Taille Societe','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.activitesociete, {'label':'Activite Societe','attr' : {'placeholder':'Activite Societe','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.nombrevoiture, {'label':'Nombre voiture','attr' : {'placeholder':'nombre voiture','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.typevoiture, {'label':'Type Voiture','attr' : {'placeholder':'Type voiture','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.gestionnaire, {'label':'Gestionnaire','attr' : {'placeholder':'gestionnaire','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.emailgestionnaire, {'label':'Email Gestionnaire','attr' : {'placeholder':'Email Gestionnaire','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.adressefacturation, {'label':'Adresse Facturation','attr' : {'placeholder':'Adresse Facturation','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.ville, {'label':'Ville','attr' : {'placeholder':'Ville','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.descriptionclient, {'label':'Description','attr' : {'placeholder':'Description','class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        <input type="submit" value="Modifier mes informations" class="btn btn-danger"/>
+        </div>
+    {{ form_end(form)}}
+    </div>
+</div>
+{% endif %}
+
+
+{% if  app.user.roles | first == 'ROLE_PROFESSIONEL' %}
+
+{{ form_start(form_professionel)}}
+    <div class="form-group">
+    {{ form_row(form_professionel.nom, {'label':'Nom','attr' : {'placeholder':'Votre nom','class':'form-control'}}) }}
+    </div>
+
+
+    <div class="form-group">
+    {{ form_row(form_professionel.prenom, {'label':'Prenom','attr' : {'placeholder':'Votre prenom','class':'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_row(form_professionel.datenaissance, {'label':'Date de naissance','attr' : {'placeholder':'Votre date de naissance','class':'form-control'}}) }}
+    </div>
+
+
+    <div class="form-group">
+    {{ form_row(form_professionel.ville, {'label':'Ville','attr' : {'placeholder':'Ville','class':'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_row(form_professionel.pays, {'label':'Pays','attr' : {'placeholder':'Pays','class':'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_row(form_professionel.telephone, {'label':'Téléphone','attr' : {'placeholder':'Votre numéro de téléphone','class':'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_row(form_professionel.adressedomicile, {'label':'Adresse domicile','attr' : {'placeholder':'Votre adresse de domicile','class':'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_row(form_professionel.societe, {'label':'Societé','attr' : {'placeholder':'Votre société','class':'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_row(form_professionel.adressesociete, {'label':'Adresse Societe','attr' : {'placeholder':'Adresse Societe','class':'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_row(form_professionel.telephonesociete, {'label':'Telephone Societe','attr' : {'placeholder':'telephone societe','class':'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_row(form_professionel.typesociete, {'label':'Type Societe','attr' : {'placeholder':'type societe','class':'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_row(form_professionel.emailsociete, {'label':'Email Societe','attr' : {'placeholder':'email societe','class':'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_row(form_professionel.adressefacturation, {'label':'Adresse Facturation','attr' : {'placeholder':'Adresse Facturation','class':'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_row(form_professionel.ville, {'label':'Ville','attr' : {'placeholder':'Ville','class':'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_row(form_professionel.descriptionclient, {'label':'Description','attr' : {'placeholder':'Description','class':'form-control'}}) }}
+    </div>
+
+<div class="form-group">
+<input type="submit" value="Confirmer mon inscription" class="btn btn-danger"/>
+</div>
+{{ form_end(form_professionel)}}
+
+
+{% endif %}
+
+{% if  app.user.roles | first == 'ROLE_USER' %}
+<div class="row">
+    <div class="col-md-6">
+        {{ form_start(form_particulier)}}
+        <div class="form-group">
+{{ form_row(form_particulier.nom, {'label':'Nom','attr' : {'placeholder':'Votre nom','class':'form-control'}}) }}
+</div>
+
+
+<div class="form-group">
+{{ form_row(form_particulier.prenom, {'label':'Prenom','attr' : {'placeholder':'Votre prenom','class':'form-control'}}) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form_particulier.datenaissance, {'label':'Date de naissance','attr' : {'placeholder':'Votre date de naissance','class':'form-control'}}) }}
+</div>
+
+
+<div class="form-group">
+{{ form_row(form_particulier.ville, {'label':'Ville','attr' : {'placeholder':'Ville','class':'form-control'}}) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form_particulier.pays, {'label':'Pays','attr' : {'placeholder':'Pays','class':'form-control'}}) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form_particulier.telephone, {'label':'Téléphone','attr' : {'placeholder':'Votre muméro de téléphone','class':'form-control'}}) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form_particulier.adressedomicile, {'label':'Adresse domicile','attr' : {'placeholder':'Votre adresse de domicile','class':'form-control'}}) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form_particulier.descriptionclient, {'label':'Description','attr' : {'placeholder':'Description','class':'form-control'}}) }}
+</div>
+
+
+
+        <div class="form-group">
+        <input type="submit" value="Modifier mes informations" class="btn btn-danger"/>
+        </div>
+        {{ form_end(form_particulier)}}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -3,7 +3,7 @@
 
 {% block body %}
 
-<h1>Confirmation Particulier</h1>
+<h1>Confirmation Professionel</h1>
 
 {{ form_start(form)}}
 <div class="form-group">
@@ -29,11 +29,39 @@
 </div>
 
 <div class="form-group">
-{{ form_row(form.telephone, {'label':'Téléphone','attr' : {'placeholder':'Votre muméro de téléphone','class':'form-control'}}) }}
+{{ form_row(form.telephone, {'label':'Téléphone','attr' : {'placeholder':'Votre numéro de téléphone','class':'form-control'}}) }}
 </div>
 
 <div class="form-group">
 {{ form_row(form.adressedomicile, {'label':'Adresse domicile','attr' : {'placeholder':'Votre adresse de domicile','class':'form-control'}}) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form.societe, {'label':'Societé','attr' : {'placeholder':'Votre société','class':'form-control'}}) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form.adressesociete, {'label':'Adresse Societe','attr' : {'placeholder':'Adresse Societe','class':'form-control'}}) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form.telephonesociete, {'label':'Telephone Societe','attr' : {'placeholder':'telephone societe','class':'form-control'}}) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form.typesociete, {'label':'Type Societe','attr' : {'placeholder':'type societe','class':'form-control'}}) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form.emailsociete, {'label':'Email Societe','attr' : {'placeholder':'email societe','class':'form-control'}}) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form.adressefacturation, {'label':'Adresse Facturation','attr' : {'placeholder':'Adresse Facturation','class':'form-control'}}) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form.ville, {'label':'Ville','attr' : {'placeholder':'Ville','class':'form-control'}}) }}
 </div>
 
 <div class="form-group">
